@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :sessions do 
   end
 
+  resources :secrets do
+  end
 end

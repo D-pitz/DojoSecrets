@@ -1,0 +1,30 @@
+<div class="d-flex flex-wrap align-content-start">
+    <div class="w-50 p-3" style="background-color: #eee;">
+        <h2><%= current_user.name %></h2> 
+        <% if flash[:success] %>
+            <div class="alert alert-success" role="alert">
+                <p><strong>Success!</strong> <%= flash[:success] %></p>
+            </div>
+        <% end %>
+        <% if flash[:errors] %>
+            <div class="alert alert-danger" role="alert" >
+                <% flash[:errors].each do |error| %>
+                    <p><strong>ERROR</strong> <%= error %></p>
+                <% end %>
+            </div>
+        <% end %>
+        <form action="/secrets" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="form-group">
+                <label for="formGroupExampleInput"><h4>New Secret</h4></label>
+                <textarea class="form-control" name="secret[content]" id="exampleFormControlTextarea3" rows="7" placeholder="Write your secret here."></textarea>
+                <input type="hidden" name="secret[user_id]" value="<%= current_user.id %>">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+

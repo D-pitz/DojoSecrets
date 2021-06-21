@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if @user = User.find_by_email(user_login[:email]).try(:authenticate, user_login[:password])
       session[:user] = @user.id
       flash[:success] = "#{@user.name} successfully logged in."
-      redirect_to "/sessions/new"
+      redirect_to "/users/#{current_user.id}"
     else 
       flash[:errors] = @user.errors.full_messages
       redirect_to :back
@@ -15,8 +15,10 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to "/users/new"
+    flash[:success] = "Successfully logged out."
+    redirect_to "/sessions/new"
   end
+  
   private
   def user_login
     params.require(:user).permit(:email, :password)
