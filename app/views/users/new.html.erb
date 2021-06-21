@@ -1,0 +1,35 @@
+<a href="/sessions/new"><button type="submit" class="btn btn-primary">Sign In</button></a>
+<div class="d-flex justify-content-around">
+    <div class="w-25 p-3" style="background-color: #eee;">
+        <h1>Register</h1>
+        <% if flash[:errors] %>
+            <div class="alert alert-danger" role="alert" >
+                <% flash[:errors].each do |error| %>
+                    <p><strong>ERROR</strong> <%= error %></p>
+                <% end %>
+            </div>
+        <% end %>
+        <form action="/users" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Name</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="user[name]" placeholder="Jon Smith">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Email</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="user[email]" placeholder="Jon@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" name="user[password]" placeholder="Password123">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Confirm Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" name="user[password_confirmation]" placeholder="Password123">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </form>
+    </div>
+</div>
+
