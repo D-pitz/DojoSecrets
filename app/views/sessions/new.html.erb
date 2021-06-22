@@ -16,6 +16,11 @@
                 <p><strong>Success!</strong> <%= flash[:success] %></p>
             </div>
         <% end %>
+        <% if flash[:alert] %>
+            <div class="alert alert-warning" role="alert" >
+                <p><strong>Sorry!</strong> <%= flash[:alert] %></p>
+            </div>
+        <% end %>
         <form action="/sessions" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <div class="form-group">
