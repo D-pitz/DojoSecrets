@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => "session#new"
+  get "/" => "sessions#new"
   
   resources :users do 
   end
@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :secrets do
+    resources :likes do
+    end
   end
+
 end
