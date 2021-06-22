@@ -23,6 +23,39 @@
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <div class="d-flex justify-content-around">
+            <div class="p-2">
+                <h3>Your Secrets</h3>
+                <table class="table table-striped">
+                    <tbody>
+                        <% current_user.secrets.each do |secret|%>
+                            <tr>
+                                <td>
+                                <%= secret.content %> <br>
+                                Likes: <%= secret.likes.count %>
+                                </td> 
+                                <td> <div class="p-2"><a data-method="delete" href="secrets/<%=     secret. id %>"><button type="submit" class="btn     btn-primary">Delete</button></   a></div></td>    
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-2">
+                <h3>Liked Secrets</h3>
+                <table class="table table-striped">
+                    <tbody>
+                        <% current_user.secrets_liked.each do |secret| %>
+                            <tr>
+                                <td>
+                                <%= secret.content %> <br>
+                                Likes: <%= secret.likes.count %>
+                                </td> 
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

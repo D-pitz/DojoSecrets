@@ -13,6 +13,7 @@
     <div class="p-2"><a data-method="delete" href="/sessions/<%= current_user.id %>"><button type="submit" class="btn btn-primary">Logout</button></a></div>
     <div class="p-2"><a href="/users/<%= current_user.id %>/edit"><button type="submit" class="btn btn-primary">Edit Account</button></a></div>
     <div class="p-2"><a href="/secrets"><button type="submit" class="btn btn-primary">View Secrets</button></a></div>
+    <div class="p-2"><a href="/users/<%= current_user.id%>"><button type="submit" class="btn btn-primary">View Your Secrets</button></a></div>
   </div>
 <% end %> 
 <%= yield %>

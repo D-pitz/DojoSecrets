@@ -2,7 +2,7 @@ class SecretsController < ApplicationController
     
     def index
         @secrets = Secret.all
-        @likes = Like.all.count
+        
     end
     
     def new
@@ -16,6 +16,11 @@ class SecretsController < ApplicationController
             flash[:errors] = @secret.errors.full_messages
             redirect_to :back
         end
+    end
+
+    def destroy
+        Secret.find(params[:id]).destroy
+        redirect_to :back
     end
     
 
