@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       session[:user] = @user.id
       flash[:success] = "#{@user.name} successfully logged in."
       redirect_to "/users/#{current_user.id}"
-    else 
-      flash[:errors] = @user.errors.full_messages
+    else
+      flash[:errors] = "Name or password incorrect"
       redirect_to :back
     end
   end

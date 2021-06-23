@@ -12,5 +12,4 @@ Rails.application.routes.draw do
     resources :likes do
     end
   end
-
 end

@@ -6,9 +6,7 @@
         </div>
         <% if flash[:errors] %>
             <div class="alert alert-danger" role="alert" >
-                <% flash[:errors].each do |error| %>
-                    <p><strong>ERROR</strong> <%= error %></p>
-                <% end %>
+                <p><strong>ERROR</strong> <%= flash[:errors] %></p>
             </div>
         <% end %>
         <% if flash[:success] %>

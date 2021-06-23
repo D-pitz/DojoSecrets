@@ -1,6 +1,5 @@
 class SecretsController < ApplicationController
     before_action :require_login
-    before_action :user_match except: [:show]
     
     def index
         @secrets = Secret.all
