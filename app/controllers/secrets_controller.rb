@@ -16,8 +16,15 @@ class SecretsController < ApplicationController
     end
 
     def destroy
-        Secret.find(params[:id]).destroy
-        redirect_to :back
+        @secret = Secret.find(params[:id])
+        if @secret.user_id == current_user.id
+            Secret.find(params[:id]).destroy
+            flash[:success] = "Secret successfully deleted"
+            redirect_to :back
+        else 
+            flash[:alert] = "Stop Hacking..."
+            redirect_to :back
+        end
     end
     
 

@@ -6,6 +6,11 @@
                 <p><strong>Success!</strong> <%= flash[:success] %></p>
             </div>
         <% end %>
+        <% if flash[:alert] %>
+            <div class="alert alert-warning" role="alert">
+                <p><strong>Hey, Your gonna have to do better than that!</strong> <%= flash[:alert] %></p>
+            </div>
+        <% end %>
         <% if flash[:errors] %>
             <div class="alert alert-danger" role="alert" >
                 <% flash[:errors].each do |error| %>

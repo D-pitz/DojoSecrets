@@ -36,7 +36,13 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :email)
     end
 
+    # def user_match
+    #     redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
+    # end
     def user_match
-        redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
+        if current_user.id != params[:id].to_i 
+            flash[:alert] = "Mind ya business"
+            redirect_to "/users/#{current_user.id}"
+        end
     end
 end
