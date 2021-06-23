@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_login, except: [:new, :create]
-    
-    def new 
-    end
+    before_action :user_match, only: [:show, :edit, :destroy, :update]
 
     def create 
         @user = User.create(user_params)
@@ -14,9 +12,6 @@ class UsersController < ApplicationController
             flash[:errors] = @user.errors.full_messages
             redirect_to :back
         end
-    end
-
-    def edit
     end
 
     def update
@@ -32,11 +27,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def logout
-        reset_session
-        redirect_to "/users"
-    end
-
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -44,5 +34,9 @@ class UsersController < ApplicationController
     
     def user_update
         params.require(:user).permit(:name, :email)
+    end
+
+    def user_match
+        redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
     end
 end

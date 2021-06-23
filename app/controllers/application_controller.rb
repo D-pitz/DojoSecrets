@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
-    flash.alert = "You must be logged in to view this page."
-    redirect_to new_session_path unless current_user
+    if !current_user
+      flash.alert = "You must be logged in to view this page."
+      redirect_to new_session_path
+    end
   end
 end
 

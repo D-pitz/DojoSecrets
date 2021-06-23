@@ -1,12 +1,9 @@
 class SecretsController < ApplicationController
     before_action :require_login
+    before_action :user_match except: [:show]
     
     def index
         @secrets = Secret.all
-        
-    end
-    
-    def new
     end
     
     def create
@@ -28,5 +25,9 @@ class SecretsController < ApplicationController
     private 
     def secret_params
         params.require(:secret).permit(:content, :user_id)
+    end
+
+    def user_login
+        params.require(:user).permit(:email, :password)
     end
 end

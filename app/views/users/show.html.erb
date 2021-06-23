@@ -34,7 +34,7 @@
                                 <%= secret.content %> <br>
                                 Likes: <%= secret.likes.count %>
                                 </td> 
-                                <td> <div class="p-2"><a data-method="delete" href="secrets/<%=     secret. id %>"><button type="submit" class="btn     btn-primary">Delete</button></   a></div></td>    
+                                <td> <div class="p-2"><a data-method="delete" href="/secrets/<%= secret.id %>"><button type="submit" class="btn     btn-primary">Delete</button></a></div></td>    
                             </tr>
                         <% end %>
                     </tbody>
