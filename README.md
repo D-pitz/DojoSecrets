@@ -3,6 +3,7 @@ Full CRUD app using:
 rails -4.2.7<br>
 ruby -2.3.1<br>
 postgreSQL<br>
+styled with bootstrap<br>
 
 to run server: 
 cd to file -> rails s -b 0.0.0.0<br>
